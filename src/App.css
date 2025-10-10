@@ -1,0 +1,213 @@
+/* D:\mongoapp\frontend\src\App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Light Theme (Default) */
+:root {
+  --primary-color: #6a11cb;
+  --secondary-color: #2575fc;
+  --background-color: #f0f2f5;
+  --card-background: #ffffff;
+  --text-color: #333;
+  --text-light: #888;
+  --border-color: #e0e0e0;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --priority-high: #ff4d4f;
+  --priority-medium: #faad14;
+  --priority-low: #52c41a;
+}
+
+/* Dark Theme */
+:root[data-theme='dark'] {
+  --primary-color: #8A4FFF;
+  --secondary-color: #599CFF;
+  --background-color: #121212;
+  --card-background: #1E1E1E;
+  --text-color: #EAEAEA;
+  --text-light: #A0A0A0;
+  --border-color: #333333;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.App {
+  background-color: var(--card-background);
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+  transition: border-color 0.3s;
+}
+
+/* New Theme Toggle Button Style */
+.theme-toggle {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+.theme-toggle:hover {
+  background-color: var(--background-color);
+}
+
+header h1 {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  font-size: 2.5rem;
+}
+header p { color: var(--text-light); font-size: 1rem; margin-top: 0.5rem; }
+
+/* All other styles (forms, lists, etc.) remain the same */
+.task-form { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
+.form-row { display: flex; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; flex: 1; }
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-light); /* Use the theme variable */
+}
+.form-input { width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 1rem; font-family: 'Poppins', sans-serif; transition: border-color 0.2s, box-shadow 0.2s; background-color: var(--background-color); color: var(--text-color); }
+.form-input:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.15); }
+.task-form button { padding: 12px 20px; border: none; background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: white; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; }
+.task-form button:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37, 117, 252, 0.3); }
+.view-controls { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); transition: border-color 0.3s; }
+.filters button { padding: 8px 16px; border: 1px solid var(--border-color); background-color: transparent; color: var(--text-light); cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; border-radius: 6px; margin-right: 0.5rem; transition: background-color 0.2s, color 0.2s, border-color 0.3s; }
+.filters button:hover { background-color: var(--background-color); color: var(--text-color); }
+.filters button.active { background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: white; border-color: transparent; }
+.sort-by { display: flex; align-items: center; gap: 0.75rem; }
+.sort-by label { font-weight: 600; font-size: 0.9rem; color: var(--text-light); }
+.sort-by select { max-width: 150px; padding: 8px 12px; }
+.task-list { list-style: none; padding: 0; margin: 0; }
+.task-list li { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 1rem; transition: box-shadow 0.2s, transform 0.2s, border-color 0.3s, background-color 0.3s; background-color: var(--card-background); }
+.task-list li:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.task-list li.completed { opacity: 0.6; background-color: transparent; }
+.task-list li.completed .task-text { text-decoration: line-through; color: var(--text-light); }
+.task-content { display: flex; flex-direction: column; gap: 0.25rem; }
+.task-text { cursor: pointer; font-weight: 600; }
+.task-date { font-size: 0.8rem; color: var(--text-light); }
+.task-actions { display: flex; align-items: center; gap: 1rem; }
+.priority-pill { font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; color: white; font-weight: 600; text-transform: uppercase; }
+.priority-high { background-color: var(--priority-high); }
+.priority-medium { background-color: var(--priority-medium); }
+.priority-low { background-color: var(--priority-low); }
+.delete-btn { border: none; background-color: #f1f1f1; color: var(--text-light); padding: 5px 10px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: background-color 0.2s, color 0.2s; }
+.delete-btn:hover { background-color: var(--priority-high); color: white; }
+.App[data-theme='dark'] .delete-btn { background-color: #2c2c2c; color: var(--text-light); }
+.App[data-theme='dark'] .delete-btn:hover { background-color: var(--priority-high); color: white; }
+/* Add these new styles for the edit feature to App.css */
+
+.edit-btn {
+  border: none;
+  background-color: #f0f2f5;
+  color: var(--text-light);
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.edit-btn:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.App[data-theme='dark'] .edit-btn {
+  background-color: #2c2c2c;
+}
+
+.edit-form {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.edit-form-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.save-btn, .cancel-btn {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.save-btn {
+  background-color: var(--priority-low);
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #f1f1f1;
+  color: var(--text-light);
+}
+
+.App[data-theme='dark'] .cancel-btn {
+  background-color: #2c2c2c;
+}
+/* Add these styles to App.css */
+
+/* New styles for the task details container */
+.task-details {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 4px;
+}
+
+.task-updated {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-light);
+}
+
+/* Update the edit form for multiple rows */
+.edit-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.edit-form .form-row {
+  width: 100%;
+}
